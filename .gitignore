@@ -1,0 +1,6 @@
+.DS_Store
+# 元のフルページスクリーンショット（容量大のため除外）
+BaseSiteImages/HOME-06-02-2026_03_57_PM.png
+BaseSiteImages/*.png
+# 中間クロップ（section_*）も除外、使用する crops/ だけ含める
+BaseSiteImages/crops/section_*.png
