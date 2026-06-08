@@ -1,1163 +1,859 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuko Sano — Design Mockup v2</title>
+<title>Japanese Song Workshop — 佐野裕子</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 
 :root {
-  --accent: #7B3A3A;
-  --sub:    #C7B38A;
-  --text:   #2B2B2B;
-  --white:  #ffffff;
-  --light:  #F9F7F4;
-  --border: rgba(43,43,43,0.09);
+  --red:     #8B2E40;
+  --gold:    #B8874A;
+  --ink:     #1A1208;
+  --body:    rgba(26,18,8,0.76);
+  --muted:   rgba(26,18,8,0.46);
+  --border:  rgba(26,18,8,0.1);
+  --cream:   #FAF7F2;
+  --offwhite:#F4EFE7;
+  --white:   #ffffff;
+  --dark:    #261A10;
+  --r:       8px;
   --fh: 'Cormorant Garamond', serif;
-  --fb: 'Noto Sans', 'Noto Sans JP', sans-serif;
+  --fb: 'Noto Sans JP', 'Noto Sans', sans-serif;
 }
 
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: #fff;
-  color: var(--text);
+  background: var(--cream);
+  color: var(--ink);
   font-family: var(--fb);
+  font-size: 15px;
   font-weight: 300;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 
-/* ── Top notice ── */
-.notice {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-  background: var(--text);
-  color: rgba(255,255,255,0.65);
-  text-align: center;
-  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-  padding: 7px 16px;
-  font-family: var(--fb);
-}
-
-/* ── Header ── */
+/* ── HEADER ── */
 .hd {
-  position: fixed; top: 27px; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 52px;
+  padding: 0 40px;
+  background: rgba(250,247,242,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
-.hd-logo {
-  font-family: var(--fh); font-size: 19px; letter-spacing: 0.07em;
-  color: rgba(255,255,255,0.95);
+.hd-logo { font-family: var(--fb); font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--ink); }
+.hd-logo span { display: block; font-size: 10px; font-weight: 400; color: var(--gold); letter-spacing: 0.15em; }
+.hd-nav { display: flex; align-items: center; gap: 28px; list-style: none; }
+.hd-nav a { font-size: 13px; font-weight: 400; color: var(--body); transition: color 0.2s; }
+.hd-nav a:hover { color: var(--red); }
+.hd-btn {
+  background: var(--red); color: #fff !important;
+  padding: 8px 18px; border-radius: 6px;
+  font-size: 13px !important; font-weight: 500 !important;
+  transition: background 0.2s !important;
 }
-.hd-nav { display: flex; align-items: center; gap: 32px; }
-.hd-nav a {
-  font-size: 11px; font-weight: 400; letter-spacing: 0.15em;
-  text-transform: uppercase; color: rgba(255,255,255,0.78);
-}
-.hd-nav .btn-nav {
-  padding: 8px 20px; border: 1px solid rgba(255,255,255,0.45);
-  border-radius: 2px; color: rgba(255,255,255,0.88);
-}
+.hd-btn:hover { background: #6b1f2f !important; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
 
-/* ── Buttons ── */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 28px;
-  font-family: var(--fb); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  border-radius: 2px; cursor: pointer;
-}
-.btn-dark  { background: var(--text); color: #fff; border: 1px solid var(--text); }
-.btn-light { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.52); }
-.btn-wine  { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-.btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-
-/* ── Layout helpers ── */
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 52px; }
-
-/* ══════════════════════════════════════════════
-   01 HERO
-══════════════════════════════════════════════ */
+/* ── HERO ── */
 .hero {
-  position: relative;
-  height: 100vh; min-height: 660px;
-  display: flex; align-items: flex-end;
-  padding-bottom: 72px;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 45%;
+  padding-top: 64px;
+  background: var(--cream);
   overflow: hidden;
-  background: #1a1008;
 }
-
-.hero-photo {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center 30%;
-  opacity: 0.75;
+.hero-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 64px 52px 64px 40px;
 }
-
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(15,10,5,0.15) 0%,
-    rgba(15,10,5,0.30) 50%,
-    rgba(15,10,5,0.72) 100%
-  );
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(184,135,74,0.12);
+  border: 1px solid rgba(184,135,74,0.3);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 11px; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.1em;
+  margin-bottom: 28px;
+  width: fit-content;
 }
-
-.hero-content {
-  position: relative; z-index: 2;
-  width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 52px;
-  color: #fff;
-}
-
-.hero-tag {
-  display: inline-block;
-  font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase;
-  color: var(--sub); margin-bottom: 18px;
-}
-
 .hero-h1 {
   font-family: var(--fh);
-  font-size: clamp(44px, 6.2vw, 82px);
-  font-weight: 300; line-height: 1.05;
-  color: #fff; margin-bottom: 20px;
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 20px;
 }
-.hero-h1 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.68); }
-
+.hero-h1 em { display: block; font-style: italic; color: var(--red); }
+.hero-lead {
+  font-size: 16px; font-weight: 400;
+  color: var(--body);
+  line-height: 1.85;
+  max-width: 440px;
+  margin-bottom: 8px;
+}
 .hero-sub {
-  font-size: 15px; font-weight: 300; line-height: 1.88;
-  color: rgba(255,255,255,0.72);
-  max-width: 420px; margin-bottom: 40px;
+  font-size: 14px; font-weight: 300;
+  color: var(--muted);
+  max-width: 440px;
+  margin-bottom: 36px;
+  line-height: 1.8;
 }
-
-.hero-btns { display: flex; gap: 12px; }
-
-/* ══════════════════════════════════════════════
-   02 ABOUT
-══════════════════════════════════════════════ */
-.about {
-  padding: 100px 0 90px;
-  background: #fff;
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.btn-primary {
+  background: var(--red); color: #fff;
+  padding: 14px 28px; border-radius: var(--r);
+  font-size: 14px; font-weight: 500;
+  transition: background 0.2s;
 }
-
-.about-inner {
-  display: grid;
-  grid-template-columns: 440px 1fr;
-  gap: 72px;
-  align-items: start;
+.btn-primary:hover { background: #6b1f2f; }
+.btn-ghost {
+  border: 1.5px solid var(--border);
+  color: var(--body);
+  padding: 14px 28px; border-radius: var(--r);
+  font-size: 14px; font-weight: 400;
+  transition: border-color 0.2s, color 0.2s;
 }
-
-/* Photo collage on left */
-.about-photos {
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-chips {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.chip {
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 12px; color: var(--body);
+  background: var(--white);
+}
+.hero-photo {
+  overflow: hidden;
+  background: var(--offwhite);
   position: relative;
-  height: 600px;
 }
-
-.about-photo-main {
-  position: absolute;
-  top: 0; left: 20px;
-  width: 300px;
-  box-shadow: 6px 8px 30px rgba(0,0,0,0.18);
-  transform: rotate(-1.2deg);
-  z-index: 2;
-}
-.about-photo-main img {
-  width: 100%; height: 380px;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-.about-photo-2 {
-  position: absolute;
-  top: 180px; left: 180px;
-  width: 240px;
-  box-shadow: 5px 7px 24px rgba(0,0,0,0.16);
-  transform: rotate(1.8deg);
-  z-index: 3;
-  border: 5px solid #fff;
-}
-.about-photo-2 img {
-  width: 100%; height: 220px;
-  object-fit: cover; object-position: center 10%;
-  display: block;
-}
-
-.about-photo-3 {
-  position: absolute;
-  top: 390px; left: 0;
-  width: 200px;
-  box-shadow: 4px 6px 20px rgba(0,0,0,0.14);
-  transform: rotate(-0.8deg);
-  z-index: 1;
-  border: 5px solid #fff;
-}
-.about-photo-3 img {
-  width: 100%; height: 160px;
-  object-fit: cover; object-position: center 50%;
-  display: block;
-}
-
-/* About text */
-.about-text { padding-top: 10px; }
-
-.tag {
-  display: inline-block;
-  font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--sub); margin-bottom: 14px;
-}
-
-.about-text h2 {
-  font-family: var(--fh);
-  font-size: clamp(30px,3.5vw,44px);
-  font-weight: 400; line-height: 1.15;
-  color: var(--text); margin-bottom: 24px;
-}
-
-.wave-line {
-  display: block; width: 48px; height: 3px;
-  background: var(--sub); margin-bottom: 28px;
-  border-radius: 2px;
-}
-
-.about-text p {
-  font-size: 15px; font-weight: 300;
-  line-height: 1.95; color: var(--text);
-  opacity: 0.82; margin-bottom: 16px;
-}
-
-.about-sig {
-  display: block;
-  font-family: var(--fh); font-size: 16px; font-style: italic;
-  color: var(--accent); margin-top: 28px;
-}
-
-/* ══════════════════════════════════════════════
-   03 KYOTO EXPERIENCE
-══════════════════════════════════════════════ */
-.experience {
-  padding: 100px 0;
-  background: var(--text);
-}
-
-.exp-hdr {
-  max-width: 540px;
-  margin-bottom: 60px;
-}
-.exp-hdr .tag { color: var(--sub); }
-.exp-hdr h2 {
-  font-family: var(--fh);
-  font-size: clamp(28px,3.5vw,44px);
-  font-weight: 400; color: #fff;
-  margin-bottom: 0;
-}
-
-.exp-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.05);
-}
-
-.exp-card {
-  background: #1d1d1d;
-  padding: 48px 34px;
-  transition: background .28s;
-}
-.exp-card:hover { background: #222; }
-
-.exp-icon { font-size: 28px; margin-bottom: 20px; }
-
-.exp-card h3 {
-  font-family: var(--fh);
-  font-size: 21px; font-weight: 400;
-  color: #fff; margin-bottom: 12px; line-height: 1.25;
-}
-
-.exp-card p {
-  font-size: 13px; font-weight: 300;
-  color: rgba(255,255,255,0.44); line-height: 1.88;
-}
-
-/* ══════════════════════════════════════════════
-   04 GALLERY  (collage / asymmetric)
-══════════════════════════════════════════════ */
-.gallery {
-  padding: 100px 0;
-  background: #fff;
-}
-
-.gallery-hdr {
-  margin-bottom: 52px;
-}
-.gallery-hdr h2 {
-  font-family: var(--fh);
-  font-size: clamp(28px,3.5vw,44px);
-  font-weight: 400; color: var(--text);
-}
-
-/* Irregular collage layout */
-.gallery-collage {
-  display: grid;
-  grid-template-columns: 2fr 1.2fr 1.5fr 1fr;
-  grid-template-rows: 280px 240px;
-  gap: 4px;
-}
-
-.gc-1 { grid-column: 1; grid-row: 1 / 3; }   /* tall left */
-.gc-2 { grid-column: 2; grid-row: 1; }
-.gc-3 { grid-column: 3; grid-row: 1; }
-.gc-4 { grid-column: 4; grid-row: 1 / 3; }   /* tall right */
-.gc-5 { grid-column: 2 / 4; grid-row: 2; }   /* wide center-bottom */
-
-.gc-item {
-  overflow: hidden; position: relative;
-}
-.gc-item img {
+.hero-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform .6s ease;
+  object-position: center top;
 }
-.gc-item:hover img { transform: scale(1.04); }
-
-/* performance photo object position */
-.gc-1 img { object-position: center 20%; }
-.gc-5 img { object-position: center 30%; }
-
-/* ══════════════════════════════════════════════
-   05 SERVICES
-══════════════════════════════════════════════ */
-.services {
-  padding: 100px 0;
-  background: var(--light);
-}
-
-.svc-hdr {
-  margin-bottom: 56px;
-}
-.svc-hdr h2 {
-  font-family: var(--fh);
-  font-size: clamp(28px,3.5vw,44px);
-  font-weight: 400; color: var(--text);
-  margin-bottom: 10px;
-}
-.svc-hdr p {
-  font-size: 14px; font-weight: 300;
-  color: var(--text); opacity: 0.65; max-width: 480px;
-}
-
-.svc-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 18px;
-}
-
-.svc-card {
-  background: #fff;
-  padding: 40px 30px;
-  position: relative;
-  border-bottom: 3px solid transparent;
-  transition: border-color .25s, box-shadow .25s;
-}
-.svc-card:hover {
-  border-bottom-color: var(--sub);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
-}
-.svc-card.featured {
-  background: var(--accent);
+.hero-photo-cap {
+  position: absolute;
+  bottom: 20px; left: 20px; right: 20px;
+  background: rgba(26,18,8,0.72);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r);
+  padding: 12px 16px;
   color: #fff;
-  border-bottom-color: #5c2a2a;
+  font-size: 12px;
+  line-height: 1.6;
 }
+.hero-photo-cap strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 1px; }
 
-.svc-rec {
-  position: absolute; top: 18px; right: 18px;
-  font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 3px 9px; background: var(--sub); color: #fff; border-radius: 2px;
-}
-
-.svc-card h3 {
-  font-family: var(--fh);
-  font-size: 21px; font-weight: 400; line-height: 1.2;
-  margin-bottom: 4px;
-}
-.svc-card.featured h3 { color: #fff; }
-
-.svc-jp {
-  font-size: 11px; font-weight: 300; opacity: 0.50; margin-bottom: 16px;
-}
-.svc-card.featured .svc-jp { color: rgba(255,255,255,0.62); opacity: 1; }
-
-.svc-bar { width: 24px; height: 1px; background: var(--sub); margin-bottom: 16px; }
-.svc-card.featured .svc-bar { background: rgba(255,255,255,0.28); }
-
-.svc-detail {
-  font-size: 13px; font-weight: 300;
-  line-height: 1.8; opacity: 0.62; margin-bottom: 24px;
-}
-.svc-card.featured .svc-detail { color: rgba(255,255,255,0.78); opacity:1; }
-
-.svc-price {
-  font-family: var(--fh);
-  font-size: 26px; font-weight: 400;
-  color: var(--accent);
-}
-.svc-card.featured .svc-price { color: #fff; }
-.svc-usd {
-  display: block; font-family: var(--fb);
-  font-size: 11px; font-weight: 300; opacity: 0.55; margin-top: 3px;
-}
-
-.svc-cta { margin-top: 44px; }
-
-/* ══════════════════════════════════════════════
-   06 FOR HOTELS
-══════════════════════════════════════════════ */
-.hotels {
-  padding: 100px 0;
-  background: #fff;
-}
-
-.hotels-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.hotels-text h2 {
-  font-family: var(--fh);
-  font-size: clamp(28px,3.5vw,44px);
-  font-weight: 400; color: var(--text);
-  margin-bottom: 20px; line-height: 1.15;
-}
-
-.hotels-text p {
-  font-size: 15px; font-weight: 300;
-  line-height: 1.92; color: var(--text);
-  opacity: 0.76; margin-bottom: 28px; max-width: 420px;
-}
-
-.hotels-list {
-  list-style: none;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 8px 24px; margin-bottom: 28px;
-}
-.hotels-list li {
+/* ── SECTION BASE ── */
+.sec { padding: 80px 40px; }
+.sec-inner { max-width: 1080px; margin: 0 auto; }
+.tag {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
   display: flex; align-items: center; gap: 10px;
-  font-size: 14px; font-weight: 300; color: var(--text);
 }
-.hotels-list li::before {
-  content: '';
-  display: block; width: 5px; height: 5px;
-  background: var(--sub); border-radius: 50%; flex-shrink: 0;
-}
-
-.hotels-note {
-  font-family: var(--fh); font-size: 15px;
-  font-style: italic; color: var(--accent); margin-bottom: 28px;
-}
-
-/* Stacked photo on right */
-.hotels-photos { position: relative; height: 480px; }
-
-.hp-1 {
-  position: absolute; top: 0; left: 0;
-  width: 280px;
-  box-shadow: 6px 8px 28px rgba(0,0,0,0.16);
-  transform: rotate(-1deg);
-  z-index: 1;
-}
-.hp-1 img { width: 100%; height: 340px; object-fit: cover; object-position: center 10%; }
-
-.hp-2 {
-  position: absolute; top: 130px; left: 160px;
-  width: 240px;
-  box-shadow: 5px 7px 22px rgba(0,0,0,0.14);
-  transform: rotate(1.5deg);
-  z-index: 2; border: 5px solid #fff;
-}
-.hp-2 img { width: 100%; height: 220px; object-fit: cover; object-position: center 20%; }
-
-
-/* ══════════════════════════════════════════════
-   07 KIMONO
-══════════════════════════════════════════════ */
-.kimono {
-  position: relative;
-  height: 65vh; min-height: 460px;
-  display: flex; align-items: center;
-  overflow: hidden;
-}
-
-.kimono-photo {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center 18%;
-}
-
-.kimono-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.72) 0%,
-    rgba(0,0,0,0.35) 55%,
-    rgba(0,0,0,0.08) 100%
-  );
-}
-
-.kimono-content {
-  position: relative; z-index: 2;
-  max-width: 1160px; margin: 0 auto; padding: 0 52px;
-  color: #fff;
-}
-.kimono-content .tag { color: var(--sub); }
-
-.kimono-content h2 {
+.tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.h2 {
   font-family: var(--fh);
-  font-size: clamp(30px,4vw,52px);
-  font-weight: 300; color: #fff;
-  margin: 12px 0 18px;
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 300; line-height: 1.2;
+  color: var(--ink); margin-bottom: 16px;
 }
+.h2 em { font-style: italic; color: var(--red); }
+.lead { font-size: 16px; color: var(--body); line-height: 1.9; max-width: 580px; }
+.hr { width: 36px; height: 2px; background: var(--gold); margin: 24px 0; border-radius: 2px; }
 
-.kimono-bar { width: 36px; height: 1px; background: rgba(255,255,255,0.30); margin-bottom: 20px; }
-
-.kimono-desc {
-  font-size: 15px; font-weight: 300;
-  color: rgba(255,255,255,0.68); max-width: 380px; line-height: 1.88;
-  margin-bottom: 16px;
+/* ── S2: PAIN/SOLUTION ── */
+.s2 { background: var(--white); }
+.s2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: start; }
+.voices-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+.voice-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.voice-list li {
+  background: var(--cream);
+  border-left: 3px solid var(--offwhite);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 13px 16px;
+  font-size: 14px; color: var(--body); line-height: 1.7;
 }
-.kimono-price {
-  font-family: var(--fh); font-size: 21px; color: var(--sub); display: block;
+.voice-list li::before { content: '「'; color: var(--gold); font-family: var(--fh); font-size: 16px; }
+.answer {
+  background: var(--cream);
+  border: 1px solid rgba(184,135,74,0.25);
+  border-radius: var(--r);
+  padding: 32px;
 }
-
-/* ══════════════════════════════════════════════
-   08 INSTAGRAM
-══════════════════════════════════════════════ */
-.instagram { padding: 100px 0; background: #f5f3ef; }
-
-.ig-hdr {
-  display: flex; align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 36px;
-}
-.ig-hdr h2 {
+.answer-q {
   font-family: var(--fh);
-  font-size: clamp(26px,3vw,40px);
-  font-weight: 400; color: var(--text);
+  font-size: 22px; font-style: italic;
+  color: var(--red); line-height: 1.45; margin-bottom: 16px;
 }
-.ig-handle {
-  font-size: 13px; font-weight: 300;
-  color: var(--text); opacity: 0.55;
-  padding-bottom: 4px;
-}
+.answer p { font-size: 14px; color: var(--body); line-height: 1.95; margin-bottom: 10px; }
+.answer p:last-child { margin-bottom: 0; }
+.answer strong { color: var(--ink); font-weight: 500; }
 
-/* 6-col Instagram grid */
-.ig-grid {
-  display: grid;
-  grid-template-columns: repeat(6,1fr);
-  gap: 3px; margin-bottom: 36px;
-}
-.ig-item { aspect-ratio: 1; overflow: hidden; cursor: pointer; }
-.ig-item img {
-  width: 100%; height: 100%;
-  object-fit: cover; transition: transform .5s;
-}
-.ig-item:hover img { transform: scale(1.07); }
+/* ── S3: FURUSATO ── */
+.s3 { background: var(--cream); }
+.s3-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+.s3-img-wrap { position: relative; }
+.s3-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border-radius: var(--r); }
+.s3-deco { position: absolute; top: -14px; right: -14px; width: 80px; height: 80px; border: 1px solid rgba(184,135,74,0.3); border-radius: var(--r); pointer-events: none; }
+.furu-word { font-family: var(--fh); font-size: clamp(44px, 5vw, 64px); font-weight: 300; color: var(--red); letter-spacing: 0.08em; line-height: 1; margin-bottom: 4px; }
+.furu-romaji { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.furu-body { font-size: 15px; color: var(--body); line-height: 2; margin-bottom: 28px; }
+.furu-body strong { color: var(--ink); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-pill { padding: 5px 14px; border: 1px solid var(--border); border-radius: 100px; font-size: 12px; color: var(--body); }
 
-/* Placeholder tiles for ig feed */
-.ig-ph { width:100%; height:100%; }
-.ig-ph-1 { background: linear-gradient(135deg,#c8a87a 0%,#5a3018 100%); }
-.ig-ph-2 { background: linear-gradient(135deg,#8a4a4a 0%,#d4a07a 100%); }
-.ig-ph-3 { background: linear-gradient(135deg,#1a0e08 0%,#9a7040 100%); }
-.ig-ph-4 { background: linear-gradient(135deg,#c8b090 0%,#5a3a20 100%); }
-.ig-ph-5 { background: linear-gradient(135deg,#7a5030 0%,#c8a87a 100%); }
-.ig-ph-6 { background: linear-gradient(135deg,#5a2a2a 0%,#c08060 100%); }
-
-.ig-cta { text-align: center; }
-
-/* ══════════════════════════════════════════════
-   09 CONTACT
-══════════════════════════════════════════════ */
-.contact { padding: 100px 0; background: #fff; }
-
-.contact-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+/* ── S4: VIDEO ── */
+.s4 { background: var(--white); }
+.s4-layout { display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+.phone { width: 200px; background: #1a1a1a; border-radius: 34px; padding: 10px; box-shadow: 0 0 0 2px #2a2a2a, 0 28px 56px rgba(26,18,8,0.28); }
+.phone-notch { width: 72px; height: 20px; background: #1a1a1a; border-radius: 0 0 12px 12px; margin: 0 auto 6px; }
+.phone-screen { aspect-ratio: 9/16; border-radius: 22px; overflow: hidden; position: relative; background: #111; }
+.phone-screen img { width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.85; }
+.play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.play-c {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.18); backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  display: flex; align-items: center; justify-content: center;
 }
+.play-c::after { content: ''; border: solid transparent; border-width: 8px 0 8px 14px; border-left-color: rgba(255,255,255,0.9); margin-left: 3px; }
+.s4-note { background: var(--cream); border-left: 3px solid var(--gold); border-radius: 0 var(--r) var(--r) 0; padding: 16px 20px; font-size: 13px; color: var(--body); line-height: 1.85; margin-top: 24px; }
 
-.contact-left h2 {
-  font-family: var(--fh);
-  font-size: clamp(28px,3.5vw,44px);
-  font-weight: 400; color: var(--text);
-  margin-bottom: 18px; line-height: 1.15;
-}
+/* ── S5: EXPERIENCE ── */
+.s5 { background: var(--cream); }
+.exp-grid { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 48px; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.exp-card { padding: 36px 24px; text-align: center; border-right: 1px solid var(--border); background: var(--white); transition: background 0.3s; }
+.exp-card:last-child { border-right: none; }
+.exp-card:hover { background: var(--cream); }
+.exp-en { font-family: var(--fh); font-size: 26px; font-style: italic; font-weight: 300; color: var(--red); margin-bottom: 4px; }
+.exp-ja { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 16px; }
+.exp-line { width: 24px; height: 1px; background: var(--gold); margin: 0 auto 16px; }
+.exp-body { font-size: 13px; color: var(--body); line-height: 1.85; }
 
-.contact-left p {
-  font-size: 15px; font-weight: 300;
-  line-height: 1.92; color: var(--text); opacity: 0.72;
-  max-width: 420px; margin-bottom: 44px;
+/* ── S6: PROGRAM (merged flow + info) ── */
+.s6 { background: var(--white); }
+.program-layout { display: grid; grid-template-columns: 1fr 340px; gap: 48px; margin-top: 48px; align-items: start; }
+.flow-list { display: flex; flex-direction: column; gap: 0; }
+.flow-step {
+  display: flex; gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
 }
+.flow-step:first-child { padding-top: 0; }
+.flow-step:last-child { border-bottom: none; padding-bottom: 0; }
+.fs-num {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 50%; border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fh); font-size: 16px; color: var(--red);
+  font-weight: 400; margin-top: 2px;
+}
+.fs-body {}
+.fs-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.fs-desc { font-size: 13px; color: var(--body); line-height: 1.8; }
+.info-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  position: sticky; top: 80px;
+}
+.info-card-title { font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: 0.05em; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.info-dl { display: flex; flex-direction: column; gap: 0; }
+.info-row {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.info-row:last-child { border-bottom: none; }
+.info-dt { font-weight: 500; color: var(--muted); font-size: 11px; letter-spacing: 0.08em; padding-top: 2px; }
+.info-dd { color: var(--body); line-height: 1.7; }
+.info-dd small { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+.info-price { font-size: 20px; font-weight: 700; color: var(--red); margin-top: 20px; margin-bottom: 4px; }
+.info-price-note { font-size: 11px; color: var(--muted); margin-bottom: 20px; }
+.info-cta {
+  display: block; width: 100%;
+  background: var(--red); color: #fff;
+  text-align: center;
+  padding: 13px; border-radius: var(--r);
+  font-size: 13px; font-weight: 500;
+  transition: background 0.2s;
+}
+.info-cta:hover { background: #6b1f2f; }
 
-.cmethod {
-  display: flex; align-items: flex-start; gap: 18px;
-  padding: 20px 0; border-bottom: 1px solid var(--border);
+/* ── S7: PERFECT FOR ── */
+.s7 { background: var(--cream); }
+.target-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; }
+.target-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 28px 24px; transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
-.cmethod:first-of-type { border-top: 1px solid var(--border); }
-.cmethod-icon { font-size: 17px; color: var(--sub); width: 22px; text-align: center; margin-top: 3px; }
-.cmethod-lbl {
-  display: block; font-size: 10px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--sub); margin-bottom: 4px;
-}
-.cmethod-val { font-size: 15px; font-weight: 300; color: var(--text); }
+.target-card:hover { border-color: rgba(184,135,74,0.45); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,18,8,0.08); }
+.target-icon { font-size: 22px; margin-bottom: 12px; }
+.target-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.target-en { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 12px; }
+.target-desc { font-size: 13px; color: var(--body); line-height: 1.85; }
 
-.contact-form {
-  background: #f9f7f4;
-  padding: 48px 44px;
-  border-top: 3px solid var(--sub);
+/* ── S8: BENEFITS ── */
+.s8 { background: var(--offwhite); }
+.benefit-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: 48px; }
+.benefit-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 24px 18px; text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+.benefit-card:hover { border-color: rgba(184,135,74,0.4); box-shadow: 0 6px 20px rgba(26,18,8,0.06); }
+.benefit-n { font-family: var(--fh); font-size: 32px; font-weight: 300; color: rgba(139,46,64,0.2); line-height: 1; margin-bottom: 10px; }
+.benefit-hr { width: 20px; height: 1px; background: var(--gold); margin: 0 auto 12px; }
+.benefit-text { font-size: 12px; color: var(--body); line-height: 1.75; font-weight: 400; }
 
-.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.fg { margin-bottom: 24px; }
-.fg label {
-  display: block;
-  font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text); opacity: 0.50; margin-bottom: 8px;
-}
-.fg input, .fg select, .fg textarea {
-  width: 100%; padding: 11px 0;
-  border: none; border-bottom: 1px solid rgba(43,43,43,0.13);
-  background: transparent;
-  font-family: var(--fb); font-size: 14px; font-weight: 300; color: var(--text);
-  outline: none; border-radius: 0; appearance: none;
-}
-.fg textarea { resize: vertical; min-height: 100px; }
-.fsub {
-  width: 100%; padding: 14px;
-  background: var(--accent); color: #fff; border: none;
-  font-family: var(--fb); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  cursor: pointer; border-radius: 2px;
-}
+/* ── S9: FACILITATOR ── */
+.s9 { background: var(--white); }
+.s9-layout { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+.s9-img-wrap { position: relative; }
+.s9-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 78% top; border-radius: var(--r); }
+.s9-badge { position: absolute; bottom: -12px; right: -12px; background: var(--red); color: #fff; padding: 10px 14px; border-radius: var(--r); font-size: 10px; letter-spacing: 0.1em; line-height: 1.6; text-align: center; font-weight: 500; }
+.s9-name { font-family: var(--fh); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 4px; }
+.s9-role { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; }
+.s9-intro { font-size: 15px; color: var(--body); line-height: 2; max-width: 500px; margin-bottom: 24px; }
+.s9-intro strong { color: var(--ink); font-weight: 500; }
+.s9-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.s9-tag { font-size: 11px; color: var(--body); border: 1px solid var(--border); padding: 4px 13px; border-radius: 100px; }
 
-/* ══════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════ */
+/* ── CONTACT ── */
+.s-contact { background: var(--dark); color: #fff; padding: 80px 40px; }
+.s-contact .tag { color: rgba(184,135,74,0.7); }
+.s-contact .tag::before { background: rgba(184,135,74,0.5); }
+.s-contact .h2 { color: #fff; }
+.s-contact .h2 em { color: rgba(212,175,110,0.9); }
+.s-contact .lead { color: rgba(255,255,255,0.58); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+.ci { margin-bottom: 20px; }
+.ci-l { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 3px; }
+.ci-v { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 300; }
+.contact-note { margin-top: 32px; padding: 22px 24px; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r); font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.95; }
+.contact-note strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+.f-grp { margin-bottom: 16px; }
+.f-lbl { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-bottom: 6px; }
+.f-in, .f-sel, .f-ta {
+  width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r); padding: 11px 14px; font-size: 13px; color: #fff;
+  font-family: var(--fb); font-weight: 300; outline: none;
+  transition: border-color 0.2s; appearance: none;
+}
+.f-in::placeholder, .f-ta::placeholder { color: rgba(255,255,255,0.25); }
+.f-in:focus, .f-sel:focus, .f-ta:focus { border-color: rgba(184,135,74,0.55); }
+.f-sel option { background: #261a10; }
+.f-ta { min-height: 100px; resize: vertical; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.f-btn {
+  width: 100%; margin-top: 8px;
+  background: var(--red); color: #fff; border: none; border-radius: var(--r);
+  padding: 13px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+  font-family: var(--fb); cursor: pointer; transition: background 0.2s;
+}
+.f-btn:hover { background: #6b1f2f; }
+
+/* ── FOOTER ── */
 .footer {
-  background: var(--text); color: #fff;
-  padding: 56px 52px;
+  background: #140e08; padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
 }
-.footer-inner {
-  max-width: 1160px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  align-items: center; gap: 40px;
-}
-.footer-logo {
-  font-family: var(--fh); font-size: 20px; letter-spacing: 0.07em;
-}
-.footer-nav { display: flex; gap: 26px; }
-.footer-nav a {
-  font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(255,255,255,0.38); transition: color .2s;
-}
-.footer-nav a:hover { color: var(--sub); }
-.footer-r { text-align: right; }
-.footer-ig {
-  display: flex; justify-content: flex-end; gap: 14px; margin-bottom: 10px;
-}
-.footer-ig a { font-size: 17px; color: rgba(255,255,255,0.35); }
-.footer-copy { font-size: 11px; color: rgba(255,255,255,0.24); letter-spacing: 0.07em; }
+.footer-logo { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
 
-/* ══════════════════════════════════════════════
-   DESIGN GUIDE
-══════════════════════════════════════════════ */
-.guide {
-  background: #1a1a1a; color: #fff;
-  padding: 60px 52px;
-  border-top: 3px solid var(--sub);
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hd { padding: 0 24px; }
+  .sec { padding: 64px 24px; }
+  .s-contact { padding: 64px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-text { padding: 72px 24px 40px; }
+  .hero-photo { height: 340px; }
+  .s2-grid, .s3-layout, .s4-layout, .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+  .program-layout { grid-template-columns: 1fr; }
+  .info-card { position: static; }
+  .s9-layout { grid-template-columns: 1fr; }
+  .s9-img-wrap { max-width: 280px; }
+  .benefit-grid { grid-template-columns: repeat(3,1fr); }
+  .target-grid { grid-template-columns: repeat(2,1fr); }
+  .exp-grid { grid-template-columns: repeat(2,1fr); }
+  .exp-card:nth-child(2) { border-right: none; }
+  .exp-card { border-bottom: 1px solid var(--border); }
+  .exp-card:nth-child(3), .exp-card:nth-child(4) { border-bottom: none; }
+  .footer { padding: 24px; }
 }
-.guide-inner { max-width: 1160px; margin: 0 auto; }
-.guide h2 {
-  font-family: var(--fh); font-size: 26px; font-weight: 400;
-  color: rgba(255,255,255,0.88); margin-bottom: 36px; letter-spacing: 0.04em;
+@media (max-width: 768px) {
+  .hd { padding: 0 16px; }
+  .hd-nav { display: none; }
+  .burger { display: flex; }
+  .sec { padding: 56px 16px; }
+  .s-contact { padding: 56px 16px; }
+  .hero-text { padding: 64px 16px 36px; }
+  .hero-btns { flex-direction: column; }
+  .hero-chips { gap: 8px; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-card { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+  .exp-card:last-child { border-bottom: none !important; }
+  .benefit-grid { grid-template-columns: repeat(2,1fr); }
+  .target-grid { grid-template-columns: 1fr; }
+  .f-row { grid-template-columns: 1fr; }
+  .footer { flex-direction: column; text-align: center; gap: 8px; padding: 20px 16px; }
 }
-.guide-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; margin-bottom: 36px; }
-.guide-block h4 {
-  font-family: var(--fb); font-size: 10px; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 12px;
-}
-.swatch { width: 100%; height: 48px; border-radius: 3px; margin-bottom: 8px; }
-.swatch-name { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.65); }
-.swatch-hex  { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; }
-.type-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
-.type-lbl {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.32); margin-bottom: 14px; font-family: var(--fb);
-}
-.sample-h { font-family: var(--fh); font-size: 34px; font-weight: 400; color: rgba(255,255,255,0.88); }
-.sample-hi { font-family: var(--fh); font-size: 22px; font-weight: 400; font-style: italic; color: rgba(199,179,138,0.7); margin-top: 8px; }
-.sample-b { font-family: var(--fb); font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.50); line-height: 1.85; margin-top: 8px; }
-.sample-lbl { font-family: var(--fb); font-size: 10px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(199,179,138,0.65); margin-top: 12px; }
-.btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
 
 </style>
 </head>
 <body>
 
-<div class="notice">Design Mockup v2 — Yuko Sano Website &nbsp;|&nbsp; ご確認用プレビュー</div>
-
-
-<!-- ── Header ── -->
-<header class="hd" style="margin-top:27px">
-  <span class="hd-logo">Yuko Sano</span>
-  <nav class="hd-nav">
-    <a href="#">Home</a>
-    <a href="#">Pricing</a>
-    <a href="#" class="btn-nav">Contact</a>
-  </nav>
+<!-- HEADER -->
+<header class="hd">
+  <div class="hd-logo">
+    Japanese Song Workshop
+    <span>Sing Japan, Feel Japan</span>
+  </div>
+  <ul class="hd-nav">
+    <li><a href="#why">なぜ今</a></li>
+    <li><a href="#furusato">ふるさと</a></li>
+    <li><a href="#program">プログラム</a></li>
+    <li><a href="#about">ファシリテーター</a></li>
+    <li><a href="#contact" class="hd-btn">お問い合わせ</a></li>
+  </ul>
+  <div class="burger"><span></span><span></span><span></span></div>
 </header>
 
 
-<!-- ══ 01 HERO ══ -->
+<!-- HERO -->
 <section class="hero">
-  <!--
-    HERO BACKGROUND PHOTO:
-    理想: ステージや会場での演奏写真、または着物姿の広角写真
-    現在: 演奏写真をトリミングして使用
-  -->
-  <img
-    class="hero-photo"
-    src="BaseSiteImages/crops/photo_performance.png"
-    alt="Performance"
-  >
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <span class="hero-tag">Kyoto &nbsp;·&nbsp; Music &nbsp;·&nbsp; Culture</span>
+  <div class="hero-text">
+    <div class="hero-badge">インバウンド向け 文化体験プログラム</div>
     <h1 class="hero-h1">
-      Sound, Words<br>
-      <em>and Emotion</em>
+      音楽を通して、<br>
+      <em>日本文化を体験する</em>
     </h1>
+    <p class="hero-lead">
+      「外国のお客様に、日本らしいひとときを届けたい」<br>
+      そんな担当者の方のお役に立てると思います。
+    </p>
     <p class="hero-sub">
-      Creating Special Moments for International Guests<br>
-      through Music and Culture.
+      日本の歌「ふるさと」を英語で解説しながら一緒に歌う、<br>
+      30〜60分の参加型ワークショップです。
     </p>
     <div class="hero-btns">
-      <a href="#" class="btn btn-wine">Contact</a>
-      <a href="#" class="btn btn-light">Instagram</a>
+      <a href="#contact" class="btn-primary">まずは相談してみる</a>
+      <a href="#program" class="btn-ghost">プログラムの流れを見る</a>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">🗣 日本語・英語対応</span>
+      <span class="chip">🏨 ホテル・会議・イベント</span>
+      <span class="chip">⏱ 30〜60分</span>
+      <span class="chip">👤 5名〜</span>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="BaseSiteImages/crops/photo_performance.png" alt="ワークショップの様子">
+    <div class="hero-photo-cap">
+      <strong>実際のワークショップの様子</strong>
+      外国のお客様とピアノを囲んで、一緒に歌います
     </div>
   </div>
 </section>
 
 
-<!-- ══ 02 ABOUT ══ -->
-<section class="about">
-  <div class="wrap">
-    <div class="about-inner">
-
-      <!-- Photo collage -->
-      <div class="about-photos">
-        <!-- Main: blue dress portrait -->
-        <div class="about-photo-main">
-          <img
-            src="BaseSiteImages/crops/photo_row.png"
-            alt="Yuko Sano"
-            style="object-position: center 5%"
-          >
-        </div>
-        <!-- Inset: performance action -->
-        <div class="about-photo-2">
-          <img
-            src="BaseSiteImages/crops/photo_performance.png"
-            alt="Performing"
-            style="object-position: left 10%"
-          >
-        </div>
-        <!-- Small: face / casual -->
-        <div class="about-photo-3">
-          <img
-            src="BaseSiteImages/crops/photo_faces_row.png"
-            alt="Yuko"
-            style="object-position: 20% 80%"
-          >
+<!-- S2: WHY NOW -->
+<section class="sec s2" id="why">
+  <div class="sec-inner">
+    <p class="tag">Why This Matters</p>
+    <h2 class="h2">こんなお悩み、<em>ありませんか？</em></h2>
+    <div class="hr"></div>
+    <div class="s2-grid">
+      <div>
+        <p class="voices-label">よくいただくご相談</p>
+        <ul class="voice-list">
+          <li>インバウンド向けに何か日本らしい体験を用意したいけど、何がいいか分からない」</li>
+          <li>英語対応してくれるプログラムを探しているが、なかなか見つからない」</li>
+          <li>参加者が本当に楽しんでくれるか不安で、踏み切れずにいる」</li>
+          <li>準備や機材が大変そうで、依頼しにくいと思っていた」</li>
+        </ul>
+      </div>
+      <div>
+        <div class="answer">
+          <p class="answer-q">"実は、歌うことが<br>一番距離を縮めます"</p>
+          <p>言葉がうまく通じなくても、一緒に歌うと自然と笑顔になります。<strong>ピアノの生演奏に合わせて「ふるさと」を歌うだけで、文化の距離がぐっと縮まります。</strong></p>
+          <p>難しい準備はありません。ピアノ（またはキーボード）と場所があれば大丈夫です。内容のカスタマイズも、気軽にご相談ください。</p>
         </div>
       </div>
-
-      <!-- Text -->
-      <div class="about-text">
-        <span class="tag">About</span>
-        <h2>About Yuko</h2>
-        <span class="wave-line"></span>
-        <p>An unforgettable expression of Kyoto's elegance — crafted exclusively for you.</p>
-        <p>With a rare ability to perform in both Japanese and English, Yuko brings the warmth of Kyoto culture to life through music, storytelling, and heartfelt hospitality.</p>
-        <p>As a vocal coach and pianist with deep roots in Kyoto, Yuko brings a heightened sensitivity to expression, atmosphere, and performance — ensuring every moment resonates with authenticity and artistry.</p>
-        <span class="about-sig">— Yuko Sano, Kyoto</span>
-      </div>
-
     </div>
   </div>
 </section>
 
 
-<!-- ══ 03 EXPERIENCE ══ -->
-<section class="experience">
-  <div class="wrap">
-    <div class="exp-hdr">
-      <span class="tag">What I Offer</span>
-      <h2>A Kyoto-Inspired<br>Cultural Experience</h2>
+<!-- S3: FURUSATO -->
+<section class="sec s3" id="furusato">
+  <div class="sec-inner">
+    <div class="s3-layout">
+      <div class="s3-img-wrap">
+        <img src="BaseSiteImages/crops/photo_kimono_garden.png" alt="秋の庭と着物" class="s3-img">
+        <div class="s3-deco"></div>
+      </div>
+      <div>
+        <p class="tag">Why Furusato</p>
+        <div class="furu-word">ふるさと</div>
+        <div class="furu-romaji">Furusato — "My Hometown"</div>
+        <div class="hr"></div>
+        <p class="furu-body">
+          「なぜ"ふるさと"なの？」と、よくきかれます。<br><br>
+          日本人なら誰もが知っている歌で、<strong>四季の美しさ・故郷への思い・家族との記憶</strong>が詰まっているから。外国の方にこの歌の意味を伝えると、みなさんとても嬉しそうな顔をされます。<br><br>
+          その顔を見るのが、私の一番の喜びです。
+        </p>
+        <div class="tags">
+          <span class="tag-pill">四季・自然</span>
+          <span class="tag-pill">故郷への思い</span>
+          <span class="tag-pill">家族の絆</span>
+          <span class="tag-pill">日本人の感性</span>
+          <span class="tag-pill">わびとさび</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+
+<!-- S4: VIDEO DEMO -->
+<section class="sec s4">
+  <div class="sec-inner">
+    <div class="s4-layout">
+      <div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="BaseSiteImages/crops/photo_performance.png" alt="演奏の様子">
+            <div class="play"><div class="play-c"></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="tag">Demo</p>
+        <h2 class="h2">実際の<em>雰囲気</em>を<br>ご覧ください</h2>
+        <p class="lead">英語で文化のお話をしながら、一緒に発音して、最後はみんなで歌います。難しそうに見えるかもしれませんが、案外あっという間に笑顔になります。</p>
+        <div class="s4-note">
+          英語による文化解説 → 日本語発音体験 → ピアノ演奏 → みんなで歌唱、という流れです。所要時間は30〜60分。内容はご要望に合わせて調整できます。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- S5: EXPERIENCE -->
+<section class="sec s5">
+  <div class="sec-inner">
+    <p class="tag">What Guests Get</p>
+    <h2 class="h2">参加者が持ち帰る<em>4つの体験</em></h2>
+    <div class="hr"></div>
     <div class="exp-grid">
       <div class="exp-card">
-        <div class="exp-icon">🌸</div>
-        <h3>Bilingual Communication</h3>
-        <p>Seamlessly connecting Japanese and international guests in both English and Japanese — creating warmth across cultures.</p>
+        <div class="exp-en">Learn</div>
+        <div class="exp-ja">知る</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">四季の美しさや故郷への思いなど、日本人の感性を歌を通じて体験的に知ることができます</p>
       </div>
       <div class="exp-card">
-        <div class="exp-icon">🎵</div>
-        <h3>Music &amp; Storytelling</h3>
-        <p>Live piano and vocal woven with stories of Kyoto — creating an atmosphere of elegance and deep emotion.</p>
+        <div class="exp-en">Speak</div>
+        <div class="exp-ja">触れる</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">日本語の発音やリズムを実際に声に出して体験。「意外と楽しい」という感想をよくいただきます</p>
       </div>
       <div class="exp-card">
-        <div class="exp-icon">⛩</div>
-        <h3>Kyoto Cultural Elements</h3>
-        <p>Authentic touches of Kyoto — from the choice of music to the art of presentation — bringing a sense of heritage to every event.</p>
+        <div class="exp-en">Sing</div>
+        <div class="exp-ja">歌う</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">ピアノの生演奏に合わせて参加者全員でふるさとを歌います。この瞬間が一番の盛り上がりです</p>
       </div>
       <div class="exp-card">
-        <div class="exp-icon">✦</div>
-        <h3>Tailored Programs</h3>
-        <p>Every program is designed around your event, guests, and vision — flexible, personal, and crafted with care.</p>
+        <div class="exp-en">Connect</div>
+        <div class="exp-ja">つながる</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">音楽を通じて参加者同士・日本文化とつながれます。記念撮影でその場の空気が一枚の写真に残ります</p>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ══ 04 GALLERY ══ -->
-<section class="gallery">
-  <div class="wrap">
-    <div class="gallery-hdr">
-      <span class="tag">Gallery</span>
-      <h2>Moments &amp; Memories</h2>
-    </div>
+<!-- S6+S10: PROGRAM (flow + details merged) -->
+<section class="sec s6" id="program">
+  <div class="sec-inner">
+    <p class="tag">Program</p>
+    <h2 class="h2">当日の流れと<em>プログラム内容</em></h2>
+    <div class="hr"></div>
+    <div class="program-layout">
 
-    <div class="gallery-collage">
-      <!-- Tall left: performance -->
-      <div class="gc-item gc-1">
-        <img src="BaseSiteImages/crops/photo_performance.png" alt="Performance">
-      </div>
-      <!-- Top center-left: kimono close -->
-      <div class="gc-item gc-2">
-        <img
-          src="BaseSiteImages/crops/photo_kimono_full.png"
-          alt="Kimono"
-          style="object-position: center 22%"
-        >
-      </div>
-      <!-- Top center-right: kimono autumn -->
-      <div class="gc-item gc-3">
-        <img
-          src="BaseSiteImages/crops/photo_kimono_garden.png"
-          alt="Autumn Kimono"
-          style="object-position: center 15%"
-        >
-      </div>
-      <!-- Tall right: garden -->
-      <div class="gc-item gc-4">
-        <img
-          src="BaseSiteImages/crops/photo_garden2.png"
-          alt="Kyoto Garden"
-          style="object-position: center 62%"
-        >
-      </div>
-      <!-- Wide bottom: faces row -->
-      <div class="gc-item gc-5">
-        <img
-          src="BaseSiteImages/crops/photo_faces_row.png"
-          alt="Yuko portraits"
-          style="object-position: center 85%"
-        >
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ 05 SERVICES ══ -->
-<section class="services">
-  <div class="wrap">
-    <div class="svc-hdr">
-      <span class="tag">Services</span>
-      <h2>Programs &amp; Services</h2>
-      <p>Each service is fully customizable to suit your venue, audience, and vision.</p>
-    </div>
-    <div class="svc-grid">
-
-      <div class="svc-card">
-        <h3>Piano Performance</h3>
-        <p class="svc-jp">ピアノ演奏</p>
-        <div class="svc-bar"></div>
-        <p class="svc-detail">Approx. 30 min / ~6 songs<br>約30分・6曲程度</p>
-        <div class="svc-price">¥70,000<span class="svc-usd">≈ USD 470</span></div>
-      </div>
-
-      <div class="svc-card">
-        <h3>Vocal Performance</h3>
-        <p class="svc-jp">歌（音源）</p>
-        <div class="svc-bar"></div>
-        <p class="svc-detail">2 songs / ~10 min<br>2曲・約10分</p>
-        <div class="svc-price">¥30,000<span class="svc-usd">≈ USD 200</span></div>
-      </div>
-
-      <div class="svc-card">
-        <h3>Bilingual MC</h3>
-        <p class="svc-jp">バイリンガル司会</p>
-        <div class="svc-bar"></div>
-        <p class="svc-detail">Up to 2 hours<br>約2時間</p>
-        <div class="svc-price">¥150,000<span class="svc-usd">≈ USD 1,000</span></div>
-      </div>
-
-      <div class="svc-card featured">
-        <div class="svc-rec">Recommended</div>
-        <h3>Premium Set Plan</h3>
-        <p class="svc-jp">セットプラン</p>
-        <div class="svc-bar"></div>
-        <p class="svc-detail">MC + Piano + Vocal<br>司会＋演奏＋歌</p>
-        <div class="svc-price">¥230,000<span class="svc-usd">≈ USD 1,530</span></div>
-      </div>
-
-    </div>
-    <div class="svc-cta">
-      <a href="#" class="btn btn-outline">View Full Pricing</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ 06 FOR HOTELS ══ -->
-<section class="hotels">
-  <div class="wrap">
-    <div class="hotels-inner">
-
-      <div class="hotels-text">
-        <span class="tag">Partnerships</span>
-        <h2>For Hotels &amp;<br>Travel Agencies</h2>
-        <span class="wave-line"></span>
-        <p>Bringing authentic Kyoto cultural experiences to your guests — elegantly and effortlessly.</p>
-        <ul class="hotels-list">
-          <li>Luxury Hotels</li>
-          <li>Ryokan</li>
-          <li>Travel Agencies</li>
-          <li>International Events</li>
-        </ul>
-        <p class="hotels-note">Custom programs available upon request.</p>
-        <a href="#" class="btn btn-outline">Get in Touch</a>
-      </div>
-
-      <!-- Stacked photos -->
-      <div class="hotels-photos">
-        <div class="hp-1">
-          <img
-            src="BaseSiteImages/crops/photo_kimono_full.png"
-            alt="Kimono performance"
-            style="object-position: center 18%"
-          >
+      <!-- Left: Flow steps -->
+      <div class="flow-list">
+        <div class="flow-step">
+          <div class="fs-num">1</div>
+          <div class="fs-body">
+            <div class="fs-title">日本文化のご紹介</div>
+            <p class="fs-desc">ふるさとの背景と、日本の四季・自然への感性を英語でお伝えします</p>
+          </div>
         </div>
-        <div class="hp-2">
-          <img
-            src="BaseSiteImages/crops/photo_performance.png"
-            alt="Event performance"
-            style="object-position: right 25%"
-          >
+        <div class="flow-step">
+          <div class="fs-num">2</div>
+          <div class="fs-body">
+            <div class="fs-title">歌詞の意味を一緒に読む</div>
+            <p class="fs-desc">「うさぎ追いし彼の山」など、歌詞の情景を一つひとつ丁寧に解説します</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">3</div>
+          <div class="fs-body">
+            <div class="fs-title">日本語の発音体験</div>
+            <p class="fs-desc">難しく考えなくて大丈夫です。みんなで声に出して日本語を体験します</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">4</div>
+          <div class="fs-body">
+            <div class="fs-title">ピアノ生演奏</div>
+            <p class="fs-desc">ふるさとをピアノで演奏します。耳で聴いて、曲の世界観をみんなで感じます</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">5</div>
+          <div class="fs-body">
+            <div class="fs-title">みんなで歌唱</div>
+            <p class="fs-desc">一番の盛り上がり。ピアノに合わせて参加者全員でふるさとを歌い上げます</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">6</div>
+          <div class="fs-body">
+            <div class="fs-title">交流・記念撮影</div>
+            <p class="fs-desc">歌った後は自然と笑顔に。感想を言い合ったり、記念写真を撮ったりします</p>
+          </div>
         </div>
       </div>
 
+      <!-- Right: Info card -->
+      <div class="info-card">
+        <div class="info-card-title">📋 プログラム詳細</div>
+        <div class="info-dl">
+          <div class="info-row">
+            <span class="info-dt">所要時間</span>
+            <span class="info-dd">30〜60分<small>ご要望に応じて調整可能</small></span>
+          </div>
+          <div class="info-row">
+            <span class="info-dt">対応人数</span>
+            <span class="info-dd">5名〜<small>上限なし。会場に合わせて対応</small></span>
+          </div>
+          <div class="info-row">
+            <span class="info-dt">対応言語</span>
+            <span class="info-dd">日本語・英語</span>
+          </div>
+          <div class="info-row">
+            <span class="info-dt">必要設備</span>
+            <span class="info-dd">ピアノ or キーボード<small>持参も可能。マイクは任意</small></span>
+          </div>
+          <div class="info-row">
+            <span class="info-dt">開催場所</span>
+            <span class="info-dd">室内ならどこでも<small>ホテル・会議室・宴会場など</small></span>
+          </div>
+        </div>
+        <div class="info-price">¥55,000〜（税込）</div>
+        <div class="info-price-note">内容・規模・出張費により変動します</div>
+        <a href="#contact" class="info-cta">お問い合わせ・お見積もり</a>
+      </div>
+
     </div>
   </div>
 </section>
 
 
-<!-- ══ 07 KIMONO ══ -->
-<section class="kimono">
-  <img
-    class="kimono-photo"
-    src="BaseSiteImages/crops/photo_kimono_garden.png"
-    alt="Kimono Performance in Kyoto"
-  >
-  <div class="kimono-overlay"></div>
-  <div class="kimono-content">
-    <span class="tag">Option</span>
-    <h2>Kimono Performance</h2>
-    <div class="kimono-bar"></div>
-    <p class="kimono-desc">
-      Experience the essence of Kyoto with a live performance in authentic kimono —
-      adding a layer of elegance and cultural depth to your event.
-    </p>
-    <span class="kimono-price">+ ¥20,000 &nbsp;(≈ USD 140)</span>
+<!-- S7: PERFECT FOR -->
+<section class="sec s7">
+  <div class="sec-inner">
+    <p class="tag">Perfect For</p>
+    <h2 class="h2">こんな場面で<em>ご活用いただいています</em></h2>
+    <div class="hr"></div>
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-icon">🏨</div>
+        <div class="target-name">ホテル</div>
+        <span class="target-en">Hotels</span>
+        <p class="target-desc">海外VIPゲストのお迎えや、チェックイン後のウェルカムタイムに。ロビーコンサートとしてもご好評です</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">✈️</div>
+        <div class="target-name">旅行会社・DMC</div>
+        <span class="target-en">Travel & DMC</span>
+        <p class="target-desc">インバウンドツアーの体験コンテンツとして。「ほかと違う日本体験」を求めるお客様に喜ばれています</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🎤</div>
+        <div class="target-name">国際会議・フォーラム</div>
+        <span class="target-en">Conferences</span>
+        <p class="target-desc">ディナー前のアイスブレイクとして。参加者同士の距離がぐっと縮まります</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🏢</div>
+        <div class="target-name">企業イベント</div>
+        <span class="target-en">Corporate</span>
+        <p class="target-desc">外国人社員の歓迎会・インセンティブツアー・社内交流会のプログラムとして</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🏛️</div>
+        <div class="target-name">自治体・観光局</div>
+        <span class="target-en">Government</span>
+        <p class="target-desc">地域の魅力発信イベントや、インバウンド促進の文化プログラムとして</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🎓</div>
+        <div class="target-name">大学・教育機関</div>
+        <span class="target-en">Education</span>
+        <p class="target-desc">留学生向けの日本文化体験授業や、国際交流プログラムの一コマとして</p>
+      </div>
+    </div>
   </div>
 </section>
 
 
-<!-- ══ 08 INSTAGRAM ══ -->
-<section class="instagram">
-  <div class="wrap">
-    <div class="ig-hdr">
+<!-- S8: BENEFITS -->
+<section class="sec s8">
+  <div class="sec-inner">
+    <p class="tag">Organizer Benefits</p>
+    <h2 class="h2">担当者の方から、<br><em>よくこう言っていただきます</em></h2>
+    <div class="hr"></div>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-n">01</div>
+        <div class="benefit-hr"></div>
+        <p class="benefit-text">外国人ゲストに喜んでもらえて、担当者として達成感があった</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-n">02</div>
+        <div class="benefit-hr"></div>
+        <p class="benefit-text">英語対応まで全部お任せできるので、当日はただ見守るだけでよかった</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-n">03</div>
+        <div class="benefit-hr"></div>
+        <p class="benefit-text">「日本らしい体験」としてアンケートで高評価をもらえた</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-n">04</div>
+        <div class="benefit-hr"></div>
+        <p class="benefit-text">屋内でできるので、天候を気にしなくていいのが助かった</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-n">05</div>
+        <div class="benefit-hr"></div>
+        <p class="benefit-text">少人数でも対応してもらえたので、小規模VIPイベントにぴったりだった</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- S9: FACILITATOR -->
+<section class="sec s9" id="about">
+  <div class="sec-inner">
+    <p class="tag">Facilitator</p>
+    <h2 class="h2">ワークショップを<em>担当します</em></h2>
+    <div class="hr"></div>
+    <div class="s9-layout">
+      <div class="s9-img-wrap">
+        <img src="BaseSiteImages/crops/photo_kimono_full.png" alt="佐野裕子" class="s9-img">
+        <div class="s9-badge">Cultural Experience<br>Facilitator</div>
+      </div>
       <div>
-        <span class="tag">Instagram</span>
-        <h2>Follow Along</h2>
+        <h3 class="s9-name">佐野 裕子</h3>
+        <p class="s9-role">Yuko Sano · Bilingual MC · Voice Coach · Pianist</p>
+        <p class="s9-intro">
+          はじめまして。音楽と言葉を使って、人と人をつなぐ仕事をしています。<br><br>
+          ピアノを弾きながら英語で日本文化をご案内する、この組み合わせが一番自分らしいと感じています。<strong>「難しいかな」と思っていた外国のお客様が、最後には笑顔で歌ってくれる瞬間</strong>が、何よりも嬉しいです。<br><br>
+          堅苦しいプログラムではありません。一緒に楽しみながら、日本をちょっと好きになってもらえたら。そんな気持ちでやっています。
+        </p>
+        <div class="s9-tags">
+          <span class="s9-tag">バイリンガルMC（日本語・英語）</span>
+          <span class="s9-tag">ピアニスト</span>
+          <span class="s9-tag">ボイスコーチ</span>
+          <span class="s9-tag">文化体験ファシリテーター</span>
+        </div>
       </div>
-      <span class="ig-handle">@yukosano.vocal</span>
-    </div>
-
-    <div class="ig-grid">
-      <!-- Replace with actual Instagram photos or embed widget -->
-      <div class="ig-item"><div class="ig-ph ig-ph-1"></div></div>
-      <div class="ig-item"><div class="ig-ph ig-ph-2"></div></div>
-      <div class="ig-item"><div class="ig-ph ig-ph-3"></div></div>
-      <div class="ig-item"><div class="ig-ph ig-ph-4"></div></div>
-      <div class="ig-item"><div class="ig-ph ig-ph-5"></div></div>
-      <div class="ig-item"><div class="ig-ph ig-ph-6"></div></div>
-    </div>
-
-    <div class="ig-cta">
-      <a href="#" class="btn btn-outline">Follow on Instagram</a>
     </div>
   </div>
 </section>
 
 
-<!-- ══ 09 CONTACT ══ -->
-<section class="contact">
-  <div class="wrap">
-    <div class="contact-inner">
-
-      <div class="contact-left">
-        <span class="tag">Contact</span>
-        <h2>Bookings &amp;<br>Inquiries</h2>
-        <span class="wave-line"></span>
-        <p>I would love to hear about your event and create something truly special together.</p>
-
-        <div class="cmethod">
-          <span class="cmethod-icon">✉</span>
-          <div>
-            <span class="cmethod-lbl">Email</span>
-            <span class="cmethod-val">hello@yukosano.com</span>
-          </div>
-        </div>
-        <div class="cmethod">
-          <span class="cmethod-icon">◈</span>
-          <div>
-            <span class="cmethod-lbl">Instagram</span>
-            <span class="cmethod-val">@yukosano.vocal</span>
-          </div>
+<!-- CONTACT -->
+<section class="s-contact" id="contact">
+  <div class="sec-inner">
+    <p class="tag">Contact</p>
+    <h2 class="h2">まずは<em>お気軽にどうぞ</em></h2>
+    <p class="lead" style="margin-top:12px;">「こんなことできますか？」「予算はどのくらいですか？」など、どんなことでも大丈夫です。2営業日以内にご返答します。</p>
+    <div class="hr" style="background:rgba(184,135,74,0.4);"></div>
+    <div class="contact-layout">
+      <div>
+        <div class="ci"><p class="ci-l">メール</p><p class="ci-v">ym_mc@live.jp</p></div>
+        <div class="ci"><p class="ci-l">電話</p><p class="ci-v">090-5904-5711</p></div>
+        <div class="ci"><p class="ci-l">対応時間</p><p class="ci-v">平日 10:00〜18:00</p></div>
+        <div class="ci"><p class="ci-l">対応言語</p><p class="ci-v">日本語・English</p></div>
+        <div class="contact-note">
+          お見積もり・内容のカスタマイズ・日程の相談など、<strong>どんなことでもお気軽にどうぞ。</strong><br><br>
+          「難しそう」と思っていたことも、話してみたら意外と簡単に解決することが多いです。遠慮なく声をかけてください。
         </div>
       </div>
-
-      <div class="contact-form">
-        <div class="frow">
-          <div class="fg">
-            <label>Your Name</label>
-            <input type="text" placeholder="Name">
-          </div>
-          <div class="fg">
-            <label>Email</label>
-            <input type="email" placeholder="email@example.com">
-          </div>
+      <form>
+        <div class="f-row">
+          <div class="f-grp"><label class="f-lbl">お名前</label><input type="text" class="f-in" placeholder="山田 太郎"></div>
+          <div class="f-grp"><label class="f-lbl">会社名・団体名</label><input type="text" class="f-in" placeholder="〇〇ホテル"></div>
         </div>
-        <div class="fg">
-          <label>Service</label>
-          <select>
-            <option>Select a service</option>
-            <option>Piano Performance</option>
-            <option>Vocal Performance</option>
-            <option>Bilingual MC</option>
-            <option>Premium Set Plan</option>
+        <div class="f-grp"><label class="f-lbl">メールアドレス</label><input type="email" class="f-in" placeholder="your@email.com"></div>
+        <div class="f-grp">
+          <label class="f-lbl">お問い合わせの種類</label>
+          <select class="f-sel">
+            <option value="">選んでください</option>
+            <option>お見積もりを知りたい</option>
+            <option>資料がほしい</option>
+            <option>内容をもう少し聞きたい</option>
+            <option>その他・まずは相談したい</option>
           </select>
         </div>
-        <div class="fg">
-          <label>Message</label>
-          <textarea placeholder="Tell me about your event..."></textarea>
-        </div>
-        <button class="fsub">Send Inquiry</button>
-      </div>
-
+        <div class="f-grp"><label class="f-lbl">メッセージ（任意）</label><textarea class="f-ta" placeholder="イベントの概要・日程・参加人数など、なんでも気軽に書いてください。"></textarea></div>
+        <button type="submit" class="f-btn">送信する</button>
+      </form>
     </div>
   </div>
 </section>
 
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-logo">Yuko Sano</span>
-    <nav class="footer-nav">
-      <a href="#">Home</a>
-      <a href="#">Pricing</a>
-      <a href="#">Contact</a>
-    </nav>
-    <div class="footer-r">
-      <div class="footer-ig"><a href="#">◈</a></div>
-      <p class="footer-copy">© 2026 Yuko Sano. All rights reserved.</p>
-    </div>
-  </div>
+  <div class="footer-logo">Japanese Song Workshop</div>
+  <p class="footer-copy">© 2026 佐野 裕子（Yuko Sano）All Rights Reserved</p>
 </footer>
-
-
-<!-- ══ DESIGN GUIDE ══ -->
-<section class="guide">
-  <div class="guide-inner">
-    <h2>Design System — カラー・タイポグラフィ・ボタン</h2>
-
-    <div class="guide-row">
-      <div class="guide-block">
-        <h4>Background</h4>
-        <div class="swatch" style="background:#ffffff;border:1px solid rgba(255,255,255,0.12)"></div>
-        <p class="swatch-name">White</p><p class="swatch-hex">#FFFFFF</p>
-      </div>
-      <div class="guide-block">
-        <h4>Text</h4>
-        <div class="swatch" style="background:#2B2B2B"></div>
-        <p class="swatch-name">Charcoal</p><p class="swatch-hex">#2B2B2B</p>
-      </div>
-      <div class="guide-block">
-        <h4>Accent</h4>
-        <div class="swatch" style="background:#7B3A3A"></div>
-        <p class="swatch-name">Deep Crimson</p><p class="swatch-hex">#7B3A3A</p>
-      </div>
-      <div class="guide-block">
-        <h4>Sub Accent</h4>
-        <div class="swatch" style="background:#C7B38A"></div>
-        <p class="swatch-name">Gold Sand</p><p class="swatch-hex">#C7B38A</p>
-      </div>
-    </div>
-
-    <div class="type-row">
-      <div>
-        <p class="type-lbl">Heading — Cormorant Garamond</p>
-        <p class="sample-h">Sound, Words and Emotion</p>
-        <p class="sample-hi">A Kyoto-Inspired Experience</p>
-      </div>
-      <div>
-        <p class="type-lbl">Body — Noto Sans</p>
-        <p class="sample-b">Creating Special Moments for International Guests through Music and Culture. With a rare ability to perform in both Japanese and English, Yuko brings the warmth of Kyoto culture to life.</p>
-        <p class="sample-lbl">SECTION LABEL · SPACED · UPPERCASE</p>
-      </div>
-    </div>
-
-    <div>
-      <p class="type-lbl" style="margin-bottom:16px">Buttons</p>
-      <div class="btn-row">
-        <button class="btn" style="background:var(--accent);color:#fff;border:1px solid var(--accent)">Contact</button>
-        <button class="btn" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.45)">Instagram</button>
-        <button class="btn" style="background:transparent;color:var(--sub);border:1px solid var(--sub)">View Pricing</button>
-        <span style="display:inline-flex;align-items:center;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;background:var(--sub);color:#fff;border-radius:2px">Recommended</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 </body>
 </html>
