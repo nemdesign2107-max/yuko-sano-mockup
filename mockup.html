@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Japanese Song Workshop — 佐野裕子</title>
+<title>Japanese Song Workshop — 佐野祐子</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -224,7 +224,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── S4: VIDEO ── */
 .s4 { background: var(--white); }
-.s4-layout { display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+.s4-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
 .phone { width: 200px; background: #1a1a1a; border-radius: 34px; padding: 10px; box-shadow: 0 0 0 2px #2a2a2a, 0 28px 56px rgba(26,18,8,0.28); }
 .phone-notch { width: 72px; height: 20px; background: #1a1a1a; border-radius: 0 0 12px 12px; margin: 0 auto 6px; }
 .phone-screen { aspect-ratio: 9/16; border-radius: 22px; overflow: hidden; position: relative; background: #111; }
@@ -434,7 +434,7 @@ a { color: inherit; text-decoration: none; }
     <span>Sing Japan, Feel Japan</span>
   </div>
   <ul class="hd-nav">
-    <li><a href="#why">お悩みについて</a></li>
+    <li><a href="#why">サービス内容</a></li>
     <li><a href="#furusato">ふるさと</a></li>
     <li><a href="#program">当日の流れ</a></li>
     <li><a href="#about">講師紹介</a></li>
@@ -501,7 +501,8 @@ a { color: inherit; text-decoration: none; }
         <div class="answer">
           <p class="answer-q">"実は、歌うことが<br>一番距離を縮めます"</p>
           <p>言葉がうまく通じなくても、一緒に歌うと自然と笑顔になります。<strong>ピアノの生演奏に合わせて「ふるさと」を歌うだけで、文化の距離がぐっと縮まります。</strong></p>
-          <p>難しい準備はありません。ピアノ（またはキーボード）と場所があれば大丈夫です。内容のカスタマイズも、気軽にご相談ください。</p>
+          <p>難しい準備はありません。ピアノ（または電子ピアノ）と場所があれば大丈夫です。内容のカスタマイズも、気軽にご相談ください。</p>
+          <p>リクエストにも応えます。<small style="color:var(--muted);">※会場の著作権申請状況によって受けられない曲もございます</small></p>
         </div>
       </div>
     </div>
@@ -545,12 +546,16 @@ a { color: inherit; text-decoration: none; }
   <div class="sec-inner">
     <div class="s4-layout">
       <div>
-        <div class="phone">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img src="BaseSiteImages/crops/photo_performance.png" alt="演奏の様子">
-            <div class="play"><div class="play-c"></div></div>
-          </div>
+        <div class="video-wrap">
+          <video
+            src="video/workshop.mp4"
+            controls
+            playsinline
+            preload="metadata"
+            style="width:100%;border-radius:var(--r);display:block;background:#111;"
+          >
+            お使いのブラウザは動画の再生に対応していません。
+          </video>
         </div>
       </div>
       <div>
@@ -674,7 +679,7 @@ a { color: inherit; text-decoration: none; }
           </div>
           <div class="info-row">
             <span class="info-dt">必要設備</span>
-            <span class="info-dd">ピアノ or キーボード<small>持参も可能。マイクは任意</small></span>
+            <span class="info-dd">ピアノ or 電子ピアノ<small>持参も可能。マイクは任意</small></span>
           </div>
           <div class="info-row">
             <span class="info-dt">開催場所</span>
@@ -784,16 +789,24 @@ a { color: inherit; text-decoration: none; }
     <div class="hr"></div>
     <div class="s9-layout">
       <div class="s9-img-wrap">
-        <img src="BaseSiteImages/crops/photo_kimono_full.png" alt="佐野裕子" class="s9-img">
+        <img src="BaseSiteImages/crops/photo_kimono_full.png" alt="佐野祐子" class="s9-img">
         <div class="s9-badge">Cultural Experience<br>Facilitator</div>
       </div>
       <div>
-        <h3 class="s9-name">佐野 裕子</h3>
+        <h3 class="s9-name">佐野 祐子</h3>
         <p class="s9-role">Yuko Sano · Bilingual MC · Voice Coach · Pianist</p>
         <p class="s9-intro">
-          はじめまして。音楽と言葉を使って、人と人をつなぐ仕事をしています。<br><br>
-          ピアノを弾きながら英語で日本文化をご案内する、この組み合わせが一番自分らしいと感じています。<strong>「難しいかな」と思っていた外国のお客様が、最後には笑顔で歌ってくれる瞬間</strong>が、何よりも嬉しいです。<br><br>
-          堅苦しいプログラムではありません。一緒に楽しみながら、日本をちょっと好きになってもらえたら。そんな気持ちでやっています。
+          はじめまして。<br><br>
+          私は音楽と言葉を通して、人と人をつなぐ活動をしています。<br><br>
+          ピアノを弾きながら、日本の歌や文化を英語で紹介し、一緒に歌う。そんな時間が、今の私にとって最も自然で、自分らしい表現です。<br><br>
+          <strong>音楽は国境を越えます。</strong><br><br>
+          四季折々の美しい日本のメロディや詩に触れることで、旅の思い出を超えた「心のお土産」を持ち帰っていただけると信じています。<br><br>
+          最初は「歌えるかな」「日本語は難しそう」と緊張していた海外のお客様が、最後には笑顔で声を合わせてくださる。そして帰国後、ご家族やご友人にその歌を披露してくださる。<strong>そんな瞬間に立ち会えることが、私の大きな喜びです。</strong><br><br>
+          堅苦しいレッスンや講義ではありません。<br><br>
+          まずは声を出す楽しさを感じていただき、日本の文化や人の温かさに触れていただくこと。そして、日本をもっと好きになっていただくこと。<br><br>
+          一曲の歌が、人と人をつなぎ、日本との新しい思い出になる…<br><br>
+          そんなひとときを、ご一緒できれば嬉しいです。<br><br>
+          さぁ　あなたの声を聴かせてください。
         </p>
         <div class="s9-tags">
           <span class="s9-tag">バイリンガルMC（日本語・英語）</span>
@@ -852,7 +865,7 @@ a { color: inherit; text-decoration: none; }
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo">Japanese Song Workshop</div>
-  <p class="footer-copy">© 2026 佐野 裕子（Yuko Sano）All Rights Reserved</p>
+  <p class="footer-copy">© 2026 佐野 祐子（Yuko Sano）All Rights Reserved</p>
 </footer>
 
 </body>
