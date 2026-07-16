@@ -61,8 +61,11 @@ a { color: inherit; text-decoration: none; }
   transition: background 0.2s !important;
 }
 .hd-btn:hover { background: #6b1f2f !important; }
-.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 210; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── HERO ── */
 .hero {
