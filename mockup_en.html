@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Song Workshop — Sing Japan, Feel Japan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="BaseSiteImages/favicon.svg">
+<meta name="description" content="A live piano workshop where overseas travelers learn to sing 'Furusato,' a Japanese song every local grows up with. Offered through hotels, tours, and events in Kyoto.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Japanese Song Workshop — Sing a Japanese Song. Feel Japan.">
+<meta property="og:description" content="A live piano workshop where you learn to sing 'Furusato' — a song every Japanese person grows up with.">
+<meta property="og:image" content="BaseSiteImages/crops/photo_performance.png">
+<style>
+
+:root {
+  --red:     #8B2E40;
+  --gold:    #B8874A;
+  --ink:     #1A1208;
+  --body:    rgba(26,18,8,0.76);
+  --muted:   rgba(26,18,8,0.58);
+  --border:  rgba(26,18,8,0.1);
+  --cream:   #FAF7F2;
+  --offwhite:#F4EFE7;
+  --white:   #ffffff;
+  --dark:    #261A10;
+  --r:       8px;
+  --fh: 'Cormorant Garamond', serif;
+  --fb: 'Noto Sans', 'Noto Sans JP', sans-serif;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--fb);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ── HEADER ── */
+.hd {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(250,247,242,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.hd-logo { font-family: var(--fb); font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--ink); }
+.hd-logo span { display: block; font-size: 12px; font-weight: 400; color: var(--gold); letter-spacing: 0.15em; }
+.hd-nav { display: flex; align-items: center; gap: 24px; list-style: none; }
+.hd-nav a { font-size: 14px; font-weight: 400; color: var(--body); transition: color 0.2s; }
+.hd-nav a:hover { color: var(--red); }
+.hd-btn {
+  background: var(--red); color: #fff !important;
+  padding: 8px 18px; border-radius: 6px;
+  font-size: 14px !important; font-weight: 500 !important;
+  transition: background 0.2s !important;
+}
+.hd-btn:hover { background: #6b1f2f !important; }
+.lang-switch {
+  border: 1px solid var(--border) !important;
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 13px !important;
+}
+.lang-switch:hover { border-color: var(--gold) !important; color: var(--gold) !important; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 210; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 45%;
+  padding-top: 64px;
+  background: var(--cream);
+  overflow: hidden;
+}
+.hero-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 64px 52px 64px 40px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(184,135,74,0.12);
+  border: 1px solid rgba(184,135,74,0.3);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 12px; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.1em;
+  margin-bottom: 28px;
+  width: fit-content;
+}
+.hero-h1 {
+  font-family: var(--fh);
+  font-size: clamp(28px, 8vw, 76px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.hero-h1 em { display: block; font-style: italic; color: var(--red); }
+.hero-lead {
+  font-size: 16px; font-weight: 400;
+  color: var(--body);
+  line-height: 1.85;
+  max-width: 440px;
+  margin-bottom: 8px;
+}
+.hero-sub {
+  font-size: 16px; font-weight: 400;
+  color: var(--muted);
+  max-width: 440px;
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.btn-primary {
+  background: var(--red); color: #fff;
+  padding: 14px 28px; border-radius: var(--r);
+  font-size: 14px; font-weight: 500;
+  text-align: center;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #6b1f2f; }
+.btn-ghost {
+  border: 1.5px solid var(--border);
+  color: var(--body);
+  padding: 14px 28px; border-radius: var(--r);
+  font-size: 14px; font-weight: 400;
+  text-align: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-chips {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.chip {
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 14px; color: var(--body);
+  background: var(--white);
+}
+.hero-photo {
+  overflow: hidden;
+  background: var(--offwhite);
+  position: relative;
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.hero-photo-cap {
+  position: absolute;
+  bottom: 20px; left: 20px; right: 20px;
+  background: rgba(26,18,8,0.72);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r);
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.hero-photo-cap strong { display: block; font-size: 15px; font-weight: 500; margin-bottom: 1px; }
+
+/* ── SECTION BASE ── */
+.sec { padding: 80px 40px; }
+.sec-inner { max-width: 1080px; margin: 0 auto; }
+.tag {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.h2 {
+  font-family: var(--fh);
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 300; line-height: 1.2;
+  color: var(--ink); margin-bottom: 16px;
+}
+.h2 em { font-style: italic; color: var(--red); }
+.lead { font-size: 16px; color: var(--body); line-height: 1.9; max-width: 580px; }
+.hr { width: 36px; height: 2px; background: var(--gold); margin: 24px 0; border-radius: 2px; }
+
+/* ── EXPERIENCE + VIDEO ── */
+.s-experience { background: var(--white); }
+.s4-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+.s4-note { background: var(--cream); border-left: 3px solid var(--gold); border-radius: 0 var(--r) var(--r) 0; padding: 16px 20px; font-size: 14px; color: var(--body); line-height: 1.85; margin-top: 24px; }
+
+/* ── FURUSATO ── */
+.s3 { background: var(--cream); }
+.s3-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+.s3-img-wrap { position: relative; }
+.s3-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border-radius: var(--r); }
+.s3-deco { position: absolute; top: -14px; right: -14px; width: 80px; height: 80px; border: 1px solid rgba(184,135,74,0.3); border-radius: var(--r); pointer-events: none; }
+.furu-word { font-family: var(--fh); font-size: clamp(44px, 5vw, 64px); font-weight: 300; color: var(--red); letter-spacing: 0.08em; line-height: 1; margin-bottom: 4px; }
+.furu-romaji { font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.furu-body { font-size: 16px; color: var(--body); line-height: 2; margin-bottom: 28px; }
+.furu-body strong { color: var(--ink); font-weight: 600; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-pill { padding: 5px 14px; border: 1px solid var(--border); border-radius: 100px; font-size: 14px; color: var(--body); }
+
+/* ── YOUR JOURNEY ── */
+.s5 { background: var(--white); }
+.exp-grid { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 48px; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.exp-card { padding: 36px 24px; text-align: center; border-right: 1px solid var(--border); background: var(--cream); transition: background 0.3s; }
+.exp-card:last-child { border-right: none; }
+.exp-card:hover { background: var(--white); }
+.exp-en { font-family: var(--fh); font-size: 26px; font-style: italic; font-weight: 300; color: var(--red); margin-bottom: 4px; }
+.exp-ja { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 16px; }
+.exp-line { width: 24px; height: 1px; background: var(--gold); margin: 0 auto 16px; }
+.exp-body { font-size: 16px; color: var(--body); line-height: 1.85; }
+
+/* ── TESTIMONIALS ── */
+.s-testimonials { background: var(--cream); }
+.testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+.testimonial-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 28px;
+}
+.t-quote {
+  font-family: var(--fh); font-size: 19px; font-style: italic;
+  color: var(--ink); line-height: 1.6; margin-bottom: 16px;
+}
+.t-quote::before { content: '“'; color: var(--red); }
+.t-quote::after { content: '”'; color: var(--red); }
+.t-author { font-size: 14px; font-weight: 600; color: var(--ink); }
+.t-country { font-size: 14px; font-weight: 400; color: var(--muted); }
+
+/* ── ABOUT ── */
+.s9 { background: var(--white); }
+.s9-layout { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+.s9-img-wrap { position: relative; }
+.s9-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border-radius: var(--r); }
+.s9-badge { position: absolute; bottom: -12px; right: -12px; background: var(--red); color: #fff; padding: 10px 14px; border-radius: var(--r); font-size: 12px; letter-spacing: 0.1em; line-height: 1.6; text-align: center; font-weight: 500; }
+.s9-name { font-family: var(--fh); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 4px; }
+.s9-role { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; }
+.s9-intro { font-size: 16px; color: var(--body); line-height: 2; max-width: 500px; margin-bottom: 24px; }
+.s9-intro strong { color: var(--ink); font-weight: 600; }
+.s9-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.s9-tag { font-size: 12px; color: var(--body); border: 1px solid var(--border); padding: 4px 13px; border-radius: 100px; }
+
+/* ── FAQ ── */
+.s-faq { background: var(--cream); }
+.faq-list { display: flex; flex-direction: column; margin-top: 48px; }
+.faq-item { padding: 22px 0; border-bottom: 1px solid var(--border); }
+.faq-item:first-child { padding-top: 0; }
+.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.faq-q { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.faq-a { font-size: 16px; color: var(--body); line-height: 1.8; }
+
+/* ── HOW TO JOIN ── */
+.s-contact { background: var(--dark); color: #fff; padding: 80px 40px; }
+.s-contact .tag { color: rgba(184,135,74,0.7); }
+.s-contact .tag::before { background: rgba(184,135,74,0.5); }
+.s-contact .h2 { color: #fff; }
+.s-contact .h2 em { color: rgba(212,175,110,0.9); }
+.s-contact .lead { color: rgba(255,255,255,0.68); }
+
+/* ── FOOTER ── */
+.footer {
+  background: #140e08; padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hd { padding: 0 24px; }
+  .sec { padding: 64px 24px; }
+  .s-contact { padding: 64px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-photo { order: -1; }
+  .hero-text { padding: 40px 24px; }
+  .hero-photo { height: 340px; }
+  .s3-layout, .s4-layout, .testimonial-grid { grid-template-columns: 1fr; gap: 36px; }
+  .s9-layout { grid-template-columns: 1fr; }
+  .s9-img-wrap { max-width: 280px; }
+  .exp-grid { grid-template-columns: repeat(2,1fr); }
+  .exp-card:nth-child(2) { border-right: none; }
+  .exp-card { border-bottom: 1px solid var(--border); }
+  .exp-card:nth-child(3), .exp-card:nth-child(4) { border-bottom: none; }
+  .footer { padding: 24px; }
+}
+@media (max-width: 768px) {
+  .hd { padding: 0 16px; }
+  .hd-nav {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 190;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px 16px;
+    box-shadow: 0 12px 24px rgba(26,18,8,0.08);
+  }
+  .hd-nav.open { display: flex; }
+  .hd-nav li { width: 100%; }
+  .hd-nav a { display: block; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .hd-nav li:last-child { margin-top: 8px; }
+  .hd-nav li:last-child a { border-bottom: none; }
+  .hd-btn, .lang-switch { display: block; text-align: center; }
+  .burger { display: flex; }
+  .sec { padding: 56px 16px; }
+  .s-contact { padding: 56px 16px; }
+  .hero-text { padding: 32px 16px; }
+  .hero-photo { height: 380px; }
+  .hero-btns { flex-direction: column; }
+  .hero-chips { gap: 8px; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-card { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+  .exp-card:last-child { border-bottom: none !important; }
+  .footer { flex-direction: column; text-align: center; gap: 8px; padding: 20px 16px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hd">
+  <div class="hd-logo">
+    Japanese Song Workshop
+    <span>Sing Japan, Feel Japan</span>
+  </div>
+  <ul class="hd-nav" id="hdNav">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#furusato">Furusato</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="mockup.html" class="lang-switch">日本語</a></li>
+    <li><a href="#join" class="hd-btn">Ask About Joining</a></li>
+  </ul>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Cultural Experience · Kyoto, Japan</div>
+    <h1 class="hero-h1">
+      Sing a Japanese Song.<br>
+      <em>Feel Japan.</em>
+    </h1>
+    <p class="hero-lead">
+      A live piano workshop where you learn to sing "Furusato" — a song every Japanese person grows up with.
+    </p>
+    <p class="hero-sub">
+      No experience needed. No Japanese needed, to start.
+    </p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary">See How It Works</a>
+      <a href="#join" class="btn-ghost">Ask About Joining</a>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">🎹 Live Piano</span>
+      <span class="chip">🗣 English-Friendly</span>
+      <span class="chip">⏱ 30–60 min</span>
+      <span class="chip">🌸 No Experience Needed</span>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="BaseSiteImages/crops/photo_performance.png" alt="Workshop in progress">
+    <div class="hero-photo-cap">
+      <strong>What a real workshop looks like</strong>
+      Sung together, live, with piano
+    </div>
+  </div>
+</section>
+
+
+<!-- THE EXPERIENCE + VIDEO -->
+<section class="sec s-experience" id="experience">
+  <div class="sec-inner">
+    <div class="s4-layout">
+      <div>
+        <p class="tag">The Experience</p>
+        <h2 class="h2">What Is This <em>Experience</em>?</h2>
+        <p class="lead">In just 30–60 minutes, you'll learn the story behind one of Japan's most beloved songs — and sing it together, live, to real piano accompaniment. No experience needed. No Japanese needed, to start.</p>
+        <div class="s4-note">
+          A short cultural introduction in English → trying the Japanese words together → live piano → singing as a group. That's the whole flow — no rehearsal, no pressure.
+        </div>
+      </div>
+      <div>
+        <div class="video-wrap">
+          <video
+            src="video/workshop.mp4"
+            poster="BaseSiteImages/crops/photo_performance.png"
+            controls
+            playsinline
+            preload="metadata"
+            style="width:100%;border-radius:var(--r);display:block;background:#111;"
+          >
+            Your browser doesn't support embedded video.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHY FURUSATO -->
+<section class="sec s3" id="furusato">
+  <div class="sec-inner">
+    <div class="s3-layout">
+      <div class="s3-img-wrap">
+        <img src="BaseSiteImages/crops/photo_kimono_garden.png" alt="Autumn garden in kimono" class="s3-img">
+        <div class="s3-deco"></div>
+      </div>
+      <div>
+        <p class="tag">Why Furusato</p>
+        <div class="furu-word">Furusato</div>
+        <div class="furu-romaji">My Hometown</div>
+        <div class="hr"></div>
+        <p class="furu-body">
+          Almost every person in Japan learns this song as a child. It's about the seasons, missing home, and the people you love — the quiet feelings that don't always translate into words.<br><br>
+          When we explain what the lyrics mean, something changes in the room. <strong>That moment — right before everyone sings — is the whole reason this workshop exists.</strong>
+        </p>
+        <div class="tags">
+          <span class="tag-pill">Seasons & Nature</span>
+          <span class="tag-pill">Longing for Home</span>
+          <span class="tag-pill">Family Bonds</span>
+          <span class="tag-pill">Japanese Sensibility</span>
+          <span class="tag-pill">Wabi-Sabi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- YOUR JOURNEY -->
+<section class="sec s5" id="journey">
+  <div class="sec-inner">
+    <p class="tag">Your Journey</p>
+    <h2 class="h2">What You'll <em>Experience</em></h2>
+    <div class="hr"></div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-en">Learn</div>
+        <div class="exp-ja">知る</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">The story behind the song, and what it says about how Japanese people feel about home and the seasons</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-en">Speak</div>
+        <div class="exp-ja">触れる</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">Try the words out loud, at your own pace. It's less intimidating than it sounds</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-en">Sing</div>
+        <div class="exp-ja">歌う</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">Join everyone, live piano, no rehearsal needed</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-en">Connect</div>
+        <div class="exp-ja">つながる</div>
+        <div class="exp-line"></div>
+        <p class="exp-body">With the room, with the song, and with a place you may be visiting for the first time</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--
+  ⚠ PLACEHOLDER TESTIMONIALS — these quotes and names are fabricated samples
+  for layout purposes only, carried over from the content draft. Do NOT
+  deploy this section publicly as-is: replace with real guest testimonials
+  (or remove the section) before this site goes live. See conversation for
+  the open decision on how to handle this if real quotes aren't ready yet.
+-->
+<section class="sec s-testimonials" id="testimonials">
+  <div class="sec-inner">
+    <p class="tag">What Guests Say</p>
+    <h2 class="h2">Real Moments, <em>Real Reactions</em></h2>
+    <div class="hr"></div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="t-quote">Honestly I went in thinking it'd be a bit cheesy. It wasn't. The piano part really got me.</p>
+        <p class="t-author">Sarah T. <span class="t-country">— United States</span></p>
+      </div>
+      <div class="testimonial-card">
+        <p class="t-quote">My kids still hum it. We've been home three weeks.</p>
+        <p class="t-author">Marco L. <span class="t-country">— Italy</span></p>
+      </div>
+      <div class="testimonial-card">
+        <p class="t-quote">I can't sing at all, like genuinely bad. Nobody cared. That was kind of the point I think.</p>
+        <p class="t-author">Chloe B. <span class="t-country">— Australia</span></p>
+      </div>
+      <div class="testimonial-card">
+        <p class="t-quote">Short, but it's the thing I keep telling people about from the whole trip.</p>
+        <p class="t-author">Wei C. <span class="t-country">— Singapore</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="sec s9" id="about">
+  <div class="sec-inner">
+    <p class="tag">About Your Host</p>
+    <h2 class="h2">Meet <em>Yuko</em></h2>
+    <div class="hr"></div>
+    <div class="s9-layout">
+      <div class="s9-img-wrap">
+        <img src="BaseSiteImages/crops/photo_kimono_full.png" alt="Yuko Sano" class="s9-img">
+        <div class="s9-badge">Cultural Experience<br>Facilitator</div>
+      </div>
+      <div>
+        <h3 class="s9-name">Yuko Sano</h3>
+        <p class="s9-role">Pianist · Bilingual Host · Voice Coach</p>
+        <p class="s9-intro">
+          I'm Yuko — a pianist, bilingual host, and voice coach. I spend my time connecting people through music and language.<br><br>
+          <strong>Music crosses borders in a way words sometimes can't.</strong><br><br>
+          My hope is that you leave with more than a photo — a small piece of Japan you can carry home, and maybe even sing to someone you love.
+        </p>
+        <div class="s9-tags">
+          <span class="s9-tag">Bilingual Host (Japanese/English)</span>
+          <span class="s9-tag">Pianist</span>
+          <span class="s9-tag">Voice Coach</span>
+          <span class="s9-tag">Cultural Experience Facilitator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="sec s-faq" id="faq">
+  <div class="sec-inner">
+    <p class="tag">Good to Know</p>
+    <h2 class="h2">Frequently Asked <em>Questions</em></h2>
+    <div class="hr"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">Do I need to speak Japanese?</p>
+        <p class="faq-a">No. Everything is explained in English first.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">I can't sing.</p>
+        <p class="faq-a">Neither could most of our guests, until they did. This isn't a performance — it's a moment.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Will I feel embarrassed?</p>
+        <p class="faq-a">Most people say the opposite — it's one of the most relaxed parts of their trip.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">How long does it take?</p>
+        <p class="faq-a">30–60 minutes, depending on the setting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW TO JOIN -->
+<section class="s-contact" id="join">
+  <div class="sec-inner">
+    <p class="tag">How to Join</p>
+    <h2 class="h2">Ready to <em>Join a Workshop?</em></h2>
+    <p class="lead" style="margin-top:12px;">This workshop is usually offered through hotels, tours, and events. Ask your concierge or tour organizer if "Japanese Song Workshop" is available.</p>
+    <div class="hr" style="background:rgba(184,135,74,0.4);"></div>
+    <p class="lead" style="margin-top:24px;">Planning something private?</p>
+    <a href="mailto:ym_mc@live.jp?subject=Japanese%20Song%20Workshop%20Inquiry" class="btn-primary" style="display:inline-block;margin-top:16px;">Get in Touch</a>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Japanese Song Workshop</div>
+  <p class="footer-copy">© 2026 Yuko Sano. All Rights Reserved</p>
+</footer>
+
+<script>
+  (function () {
+    var burger = document.getElementById('burger');
+    var nav = document.getElementById('hdNav');
+    function closeNav() {
+      nav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Open menu');
+    }
+    function toggleNav() {
+      var isOpen = nav.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', String(isOpen));
+      burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    }
+    burger.addEventListener('click', toggleNav);
+    burger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleNav(); }
+    });
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeNav);
+    });
+  })();
+</script>
+</body>
+</html>
