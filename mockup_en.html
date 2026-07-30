@@ -604,7 +604,13 @@ a { color: inherit; text-decoration: none; }
     <p class="lead" style="margin-top:12px;">This workshop is usually offered through hotels, tours, and events. Ask your concierge or tour organizer if "Japanese Song Workshop" is available.</p>
     <div class="hr" style="background:rgba(184,135,74,0.4);"></div>
     <p class="lead" style="margin-top:24px;">Planning something private?</p>
-    <a href="mailto:ym_mc@live.jp?subject=Japanese%20Song%20Workshop%20Inquiry" class="btn-primary" style="display:inline-block;margin-top:16px;">Get in Touch</a>
+    <form action="https://formspree.io/f/xrenppbp" method="POST" style="max-width:440px;margin-top:20px;">
+      <input type="hidden" name="_subject" value="Japanese Song Workshop Inquiry (EN)">
+      <div class="f-grp"><label class="f-lbl">Name</label><input type="text" name="name" class="f-in" placeholder="Jane Smith" required></div>
+      <div class="f-grp"><label class="f-lbl">Email</label><input type="email" name="email" class="f-in" placeholder="your@email.com" required></div>
+      <div class="f-grp"><label class="f-lbl">Message</label><textarea name="message" class="f-ta" placeholder="Tell us about your event, dates, and number of guests."></textarea></div>
+      <button type="submit" class="f-btn">Send</button>
+    </form>
   </div>
 </section>
 
