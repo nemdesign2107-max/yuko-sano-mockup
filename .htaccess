@@ -1,9 +1,4 @@
 RewriteEngine On
-
-# www -> non-www (canonical is https://music-kyoto.com/)
-RewriteCond %{HTTP_HOST} ^www\.music-kyoto\.com$ [NC]
-RewriteRule ^(.*)$ https://music-kyoto.com/$1 [L,R=301]
-
-# http -> https
+RewriteCond %{HTTP_HOST} ^www\.music-kyoto\.com$ [NC,OR]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://music-kyoto.com/$1 [L,R=301]
